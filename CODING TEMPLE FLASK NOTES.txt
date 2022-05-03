@@ -1,0 +1,80 @@
+If Cloning from an existing project:
+step 1. Clone from GitHub repository
+    git clone and-then-insert-the-url-in-place-of-this-text
+step 2. Create venv
+    python -m venv my_venv
+    (click yes when asked if you would like to make it your workspace folder)
+step 3. Activate venv
+    my_venv\Scripts\Activate
+step 4. Install the requirements file in your venv AFTER activating 
+    pip install -r requirements.txt
+step 5. If you would like to change the GitHub repository, delete the .git file by going to your Windows File Explorer, navigating to this directory, showing hidden files, and deleting .git
+step 6. If you deleted the existing .git repository, you must create a new .git if you would like to upload your work to GitHub
+    git init
+step 7. Create new environmental variables file called .env on the same folder level as this Notes file
+Your .env should look like this:
+FLASK_APP=run.py
+FLASK_ENV=development
+SECRET_KEY=shohaisthegoat
+DATABASE_URL=postgresql:// <-- ADD YOUR DATABASE HOST URL AFTER THE "//"
+
+
+Changing the environment to development gives you back helpful errors. Otherwise, you won't be able to tell what went wrong, but when you officially release your application, you change the environment back to "production"
+
+Blueprints are all the routes that you want to split up because they serve different purposes on your website and have multiple sub-routes associated with them.
+You create the instance of each route in their respective routes.py file with:
+from flask import Blueprint
+blue-print-name = Blueprint('blue-print-name', __name__, template_folder='whatever-you-call-your-templates-folder')
+Templates folders, for blueprints you create, can be called whatever-the-blueprint-name-is_templates because you're assigning the name of the template_folder above in Blueprint()
+HOWEVER, The templates folder in the root level of our app HAS to be named templates because of how the built-in render_templates() module in our app's routes.py looks for template folders
+Any time you are using built-in methods/functions/modules, you can hover over them to see what they take in and get a brief description of what they do
+
+pip list (shows everything you've pip installed)
+pip freeze (adds everything you've pip installed to requirements.txt)
+
+create a .gitignore and list all of the files you would not like to send when pushing to GitHub 
+
+Whenever someone types anything into the browser, they are doing a GET request
+
+Anytime you make changes to your database, you have to Migrate the changes
+flask db init
+flask db migrate
+flask db upgrade
+
+Linking to Heroku:
+Create Procfile and put in web: gunicorn app:app
+Create project on heroku.com
+On heroku, set Config Vars to:
+SECRET_KEY and whatever-your-secret-key-is
+DATABASE_URL and whatever-your-elephantSQL-url-is
+
+JSON stands for JavaScript Object Notation
+
+
+Creating Flask App From the Ground Up - Shorthand Steps
+0. python -m venv my_venv
+1. Initialize (config.py, __init__.py)
+2. Create .env file
+3. pip install python-dotenv
+4. Routes 
+5. Blueprints 
+6. pip install Flask-WTF Flask-Migrate Flask-SQLAlchemy
+7. Models 
+8. Link database to app
+9. Forms
+10. pip install email-validator
+11. auth > templates, forms, and routes
+12. {{ form.hidden_tag() }} needs to be added to the html signup page
+11. Create Static folder for files that don't changed like CSS, Images, JS, etc...
+12. Add secret key to config.py and .env
+13. Host your database on ElephantSQL and add DATABASE_URL to .env (Make sure to change postgres to postgresql)
+14. pip install psycopg2
+15. 
+16. pip install flask-login
+17. Tie in LoginManager to app
+18. link web app to heroku
+20. pip install gunicorn
+21. Connect to any APIs 
+22. HTTP requests
+23. pip install requests
+24. 

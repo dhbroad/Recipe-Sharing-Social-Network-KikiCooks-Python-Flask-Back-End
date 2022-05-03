@@ -1,0 +1,31 @@
+<!-- 
+
+COPIED FROM LOGIN.HTML AND TWEAKED TO MATCH OUR VARIABLES
+
+ -->
+
+
+{% extends 'base.html' %}
+
+{% block content %}
+<form method="POST">
+    {{ form.hidden_tag() }}
+    <div class="form-group">
+        <fieldset>
+            {{ form.title.label }}
+            {{ form.title(class='form-control', placeholder='Title') }}
+        </fieldset>
+        <fieldset>
+            {{ form.img_url.label }}
+            {{ form.img_url(class='form-control', placeholder='Image URL') }}
+        </fieldset>
+        <fieldset>
+            {{ form.caption.label }}
+            {{ form.caption(class='form-control', placeholder='Caption') }}
+        </fieldset>
+        {{ form.submit(class='btn btn-primary') }}
+
+    </div>
+</form>
+
+{% endblock content %}

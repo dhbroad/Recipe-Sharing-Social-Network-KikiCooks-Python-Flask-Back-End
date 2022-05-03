@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block content %}
+        {% for post in posts %}
+            <a href='{{ url_for("ig.individualPost", post_id=post.id) }}' class="card" style="width: 18rem;">
+                <img src="{{ post.image }}" class="card-img-top" alt="{{ post.title }}">
+                <div class="card-body">
+                <h5 class="card-title">{{ post.title }}</h5>
+                <p class="card-text">{{ post.caption }}</p>
+                </div>
+            </a>
+
+
+
+        {% endfor %}
+{% endblock content %}

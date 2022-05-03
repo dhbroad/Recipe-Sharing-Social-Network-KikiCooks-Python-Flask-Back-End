@@ -1,0 +1,61 @@
+<!-- 
+BASED OFF LOGIN.HTML AND DAVID'S MOCK-AMAZON HW PAGE
+ -->
+
+
+{% extends 'base.html' %}
+
+{% block content %}
+<form class="sign-up-container" method="POST">
+    {{ form.hidden_tag() }}
+    <div class="sign-in">
+        <h1>Sign Up</h1>
+    </div>
+    <div class="email">
+        <p><strong><small>Email (phone for mobile accounts)</small></strong></p>
+    </div>
+    <div class="email-space space">
+        {{ form.username(class='input-space', placeholder='Username', autocomplete="off") }} <!-- You can add the class name and other attributes in parenthesis -->
+        {{ form.email(class='input-space', placeholder='Email') }}
+    </div>
+ 
+    <div class="forgot-password">
+        <a class="hyperlink" href="https://www.amazon.com/ap/forgotpassword?showRememberMe=true&openid.pape.max_auth_age=0&openid.identity=http%3A%2F%2Fspecs.openid.net%2Fauth%2F2.0%2Fidentifier_select&pageId=usflex&openid.return_to=https%3A%2F%2Fwww.amazon.com%2F%3F_encoding%3DUTF8%26ref_%3Dnav_custrec_newcust&prevRID=4VEK3YCPP6W83ZNJH2W5&openid.assoc_handle=usflex&openid.mode=checkid_setup&prepopulatedLoginId=&failedSignInCount=0&openid.claimed_id=http%3A%2F%2Fspecs.openid.net%2Fauth%2F2.0%2Fidentifier_select&openid.ns=http%3A%2F%2Fspecs.openid.net%2Fauth%2F2.0"><small>Forgot your password?</small></a>
+    </div>
+    <div class="password-text">
+        <p><strong><small>Password</small></strong></p>
+    </div>
+    <div class="password-space">
+        {{ form.password(class='input-space', placeholder='Password') }}
+        {{ form.confirm_password(class='input-space', placeholder='Confirm Password') }}
+    </div>
+    <div class="sign-in-button">
+        
+        {{ form.submit }}
+        
+    </div>
+    <div class="terms-and-services">
+        <p>By continuing, you agree to Amazon's <a class="hyperlink" href="https://www.amazon.com/gp/help/customer/display.html/ref=ap_signin_notification_condition_of_use?ie=UTF8&nodeId=508088">
+            Conditions of <br><br> Use</a> and <a class="hyperlink" href="https://www.amazon.com/gp/help/customer/display.html/ref=ap_signin_notification_privacy_notice?ie=UTF8&nodeId=468496">Privacy Notice</a>.</p>
+    </div>
+    <div class="stay-signed-in">
+        <input class="stay-signed-in-checkbox" type="checkbox">
+            <p style="display:inline-block">Keep me signed in. 
+                <div class="details-tooltip">Details<span class = "details-tooltip-text">Choosing "Keep me signed in" reduces the number of times you're asked to Sign-In on this device.
+                    <br><br>To keep your account secure, use this option only on your personal devices.</span>
+                </div>
+            </p>
+    </div>
+    <div class="new-to-amazon">
+        <hr style="display:inline-block; color:white;"><small>NEW TO AMAZON?</small><hr style ="display:inline-block">
+    </div>
+    <div class="create-account">
+        <form action="https://www.amazon.com/">
+        <input type="submit" value="Create your Amazon account"></form>
+    </div>
+</form>
+
+
+  
+
+{% endblock content %}

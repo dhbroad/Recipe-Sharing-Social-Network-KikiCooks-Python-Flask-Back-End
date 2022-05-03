@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<form method="POST">
+    {{ form.hidden_tag() }}
+    <div class="form-group"> <!-- form-group is a bootstrap class -->
+        <fieldset> <!-- Fieldsets are input fields that allow the user to put in data -->
+            {{ form.username.label }} <!-- This is just a header/label that will show up as Username -->
+            {{ form.username(class='form-control', placeholder='Username', autocomplete='off') }} <!-- We passed in the LogInForm as 'form' into this html template. So now we are setting up the fields to send the user input back to the variables we set in routes.py -->
+        </fieldset>
+        <fieldset>
+            {{ form.password.label }}
+            {{ form.password(class='form-control', placeholder='Password') }}
+        </fieldset>
+        <fieldset>
+            {{ form.remember_me.label(class='form-check-label') }}
+            {{ form.remember_me(class='form-check-input') }}
+        </fieldset>
+        {{ form.submit(class='btn btn-primary') }}
+
+    </div>
+</form>
+
+{% endblock content %}

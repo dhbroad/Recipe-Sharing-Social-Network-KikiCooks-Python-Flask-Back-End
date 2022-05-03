@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<form method="POST">
+    {{ form.hidden_tag() }}
+    <div class="form-group">
+        <fieldset>
+            {{ form.title.label }}
+            {{ form.title(class='form-control', placeholder='Title', value=post.title) }} <!-- The only thing that is different for the updatepost.html versus createpost.html is that we are a value=post.attribute which prefills the field -->
+        </fieldset>
+        <fieldset>
+            {{ form.img_url.label }}
+            {{ form.img_url(class='form-control', placeholder='Image URL', value=post.image) }}
+        </fieldset>
+        <fieldset>
+            {{ form.caption.label }}
+            {{ form.caption(class='form-control', placeholder='Caption', value=post.caption) }}
+        </fieldset>
+        {{ form.submit(class='btn btn-primary') }}
+
+    </div>
+</form>
+
+{% endblock content %}

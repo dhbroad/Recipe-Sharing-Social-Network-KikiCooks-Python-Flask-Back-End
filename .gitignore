@@ -1,0 +1,7 @@
+/my_venv
+.env
+/__pycache__
+/auth/__pycache__
+/ig/__pycache__
+/pokemon/__pycache__
+/shop/__pycache__
