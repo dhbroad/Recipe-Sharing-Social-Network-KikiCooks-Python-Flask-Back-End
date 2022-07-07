@@ -123,7 +123,7 @@ def apiSignMeUp():
     if user:
         return {
             'status': 'not ok',
-            'message': 'A user with that username already exists. Tough.'
+            'message': 'A user with that username already exists. Please try again.'
         }
     # create an instance of our user
     user = User(username, email, password1)
@@ -133,13 +133,13 @@ def apiSignMeUp():
     # commit to databse
     db.session.commit()
 
-    msg = Message(
-        f"Welcome to Shoha's Bike Shop!",
-        body= 'Thank you for joining our mailing list. We sell only the biest bikes. Stay tuned for more deals and fire cops.',
-        recipients=[email]
-    )
+    # msg = Message(
+    #     f"Welcome!",
+    #     body= 'Thank you for joining our mailing list.',
+    #     recipients=[email]
+    # )
 
-    mail.send(msg)
+    # mail.send(msg)
 
     return {
         'status': 'ok',
