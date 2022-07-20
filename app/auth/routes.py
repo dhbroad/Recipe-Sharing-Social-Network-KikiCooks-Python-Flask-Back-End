@@ -143,7 +143,7 @@ def apiSignMeUp():
 
     return {
         'status': 'ok',
-        'message': f"Successfully created an account for {username}.",
+        'message': f"Successfully created an account for {username}. Please Log In.",
         'user': user.to_dict()
     }
 
