@@ -242,3 +242,21 @@ def apiGoToUser(username):
         'user': username,
         'posts': [p.to_dict() for p in posts]
         }
+
+@ig.route('/api/search-results')
+def apiSearchBarQuery(searchInput):
+    postResults = Post.query.filter_by(searchInput=searchInput)[::-1] # need to figure out Kwargs 
+    userResults = Post.query.filter_by(searchInput=searchInput)[::-1]
+    if postResults is None and userResults is None:
+        return {
+            'status': 'not ok',
+            'total_results': 0,
+            'posts': []
+        }
+    else:
+        return {
+            'status': 'ok',
+            # 'total_results': len(favorites),
+            'posts': [p.to_dict() for p in postResults],
+            'users': [u.to_dict() for u in userResults]
+            }
