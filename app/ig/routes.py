@@ -245,8 +245,9 @@ def apiGoToUser(username):
 
 @ig.route('/api/search-results')
 def apiSearchBarQuery(searchInput):
-    postResults = Post.query.filter_by(searchInput=searchInput)[::-1] # need to figure out Kwargs 
-    userResults = Post.query.filter_by(searchInput=searchInput)[::-1]
+
+    postResults = Post.query.filter_by(title=searchInput)[::-1] # need to figure out Kwargs 
+    userResults = Post.query.filter_by(user=searchInput)[::-1]
     if postResults is None and userResults is None:
         return {
             'status': 'not ok',
