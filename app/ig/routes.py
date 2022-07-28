@@ -228,7 +228,7 @@ def apiGetDays(user):
         'posts': [p.to_dict() for p in posts]
         }
 
-@ig.route('/api/user-posts/<string:username>')
+@ig.route('/api/profile/<string:username>')
 def apiGoToUser(username):
     posts = Post.query.filter_by(username=username)[::-1]
     if posts is None:
@@ -243,21 +243,35 @@ def apiGoToUser(username):
         'posts': [p.to_dict() for p in posts]
         }
 
-@ig.route('/api/search-results')
+@ig.route('/api/search/<string:searchInput>')
 def apiSearchBarQuery(searchInput):
-
-    postResults = Post.query.filter_by(title=searchInput)[::-1] # need to figure out Kwargs 
-    userResults = Post.query.filter_by(user=searchInput)[::-1]
+    postResults = Post.query.filter_by(Post.title.contains(searchInput))[::-1]
+    userResults = Post.query.filter_by(Post.username.contains(searchInput))[::-1]
     if postResults is None and userResults is None:
         return {
             'status': 'not ok',
             'total_results': 0,
-            'posts': []
+            'posts': [],
+            'users':[]
         }
+    if postResults is not None and userResults is None:
+        return {
+            'status': 'ok',
+            'total_results': len(postResults),
+            'posts': [p.to_dict() for p in postResults],
+            'users': 'None'
+            }
+    if postResults is None and userResults is not None:
+        return {
+            'status': 'ok',
+            'total_results': len(userResults),
+            'posts': 'None',
+            'users': [u.to_dict() for u in userResults]
+            }
     else:
         return {
             'status': 'ok',
-            # 'total_results': len(favorites),
+            'total_results': len(postResults)+len(userResults),
             'posts': [p.to_dict() for p in postResults],
             'users': [u.to_dict() for u in userResults]
             }
