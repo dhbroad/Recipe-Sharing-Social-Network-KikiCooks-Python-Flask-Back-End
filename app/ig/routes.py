@@ -245,30 +245,31 @@ def apiGoToUser(username):
 
 @ig.route('/api/search/<string:searchInput>')
 def apiSearchBarQuery(searchInput):
-    postResults = Post.query.filter_by(Post.title.contains(searchInput))[::-1]
-    userResults = Post.query.filter_by(Post.username.contains(searchInput))[::-1]
-    if postResults is None and userResults is None:
+    postResults = Post.query.filter(Post.title.ilike(searchInput))[::-1]
+    userResults = Post.query.filter(Post.username.ilike(searchInput))[::-1]
+    if postResults is [] and userResults is []:
         return {
             'status': 'not ok',
             'total_results': 0,
             'posts': [],
             'users':[]
         }
-    if postResults is not None and userResults is None:
+    if postResults is not None and userResults is []:
         return {
             'status': 'ok',
             'total_results': len(postResults),
             'posts': [p.to_dict() for p in postResults],
             'users': 'None'
             }
-    if postResults is None and userResults is not None:
+    if postResults is [] and userResults is not None:
         return {
             'status': 'ok',
             'total_results': len(userResults),
             'posts': 'None',
-            'users': [u.to_dict() for u in userResults]
+            'users': [u.to_dict().username for u in userResults]
             }
     else:
+        print(u.to_dict() for u in userResults)
         return {
             'status': 'ok',
             'total_results': len(postResults)+len(userResults),
