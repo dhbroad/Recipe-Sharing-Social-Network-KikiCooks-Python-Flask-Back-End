@@ -82,6 +82,10 @@ class Post(db.Model):
             'user_id': self.user_id
         }
 
+    def to_user_dict(self): {
+        'username':self.username
+        }
+
 
 class Favorite(db.Model):
     id = db.Column(db.Integer, primary_key=True)
