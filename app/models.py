@@ -37,6 +37,11 @@ class User(db.Model, UserMixin): # inheriting from the db.Model class
             'token': self.apitoken
         }
 
+    def to_username_dict(self):
+        return {
+            'username': self.username
+        }
+
 class Post(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     title = db.Column(db.String(200), nullable=False, unique=False) # unique=False could be ommitted because it defaults to false
@@ -82,7 +87,8 @@ class Post(db.Model):
             'user_id': self.user_id
         }
 
-    def to_user_dict(self): {
+    def to_user_dict(self): 
+        return {
         'username':self.username
         }
 

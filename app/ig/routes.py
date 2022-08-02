@@ -3,6 +3,8 @@ from flask_login import current_user, login_required
 
 from app.apiauthhelper import token_required
 
+from sqlalchemy import func
+
 
 ig = Blueprint('ig', __name__, template_folder='ig_templates')
 
@@ -245,8 +247,8 @@ def apiGoToUser(username):
 
 @ig.route('/api/search/<string:searchInput>')
 def apiSearchBarQuery(searchInput):
-    postResults = Post.query.filter(Post.title.contains(searchInput))[::-1]
-    userResults = Post.query.filter(Post.username.contains(searchInput))[::-1]
+    postResults = Post.query.filter(func.lower(Post.title).contains(func.lower(searchInput)))[::-1]
+    userResults = User.query.filter(func.lower(User.username).contains(func.lower(searchInput)))[::-1]
     if postResults is [] and userResults is []:
         return {
             'status': 'not ok',
@@ -266,12 +268,12 @@ def apiSearchBarQuery(searchInput):
             'status': 'ok',
             'total_results': len(userResults),
             'posts': 'None',
-            'users': [u.to_user_dict().username for u in userResults]
+            'users': [u.to_username_dict().username for u in userResults]
             }
     else:
         return {
             'status': 'ok',
             'total_results': len(postResults)+len(userResults),
             'posts': [p.to_dict() for p in postResults],
-            'users': [u.to_user_dict() for u in userResults]
+            'users': [u.to_username_dict() for u in userResults]
             }
