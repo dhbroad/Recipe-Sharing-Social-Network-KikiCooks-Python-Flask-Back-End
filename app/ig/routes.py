@@ -249,7 +249,7 @@ def apiGoToUser(username):
 def apiSearchBarQuery(searchInput):
     postResults = Post.query.filter(func.lower(Post.title).contains(func.lower(searchInput)))[::-1]
     userResults = User.query.filter(func.lower(User.username).contains(func.lower(searchInput)))[::-1]
-    if postResults is [] and userResults is []:
+    if postResults == None and userResults == None:
         return {
             'status': 'not ok',
             'total_results': 0,
