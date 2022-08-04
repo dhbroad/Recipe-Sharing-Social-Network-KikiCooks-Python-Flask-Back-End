@@ -1,4 +1,5 @@
 # run.py is the "entry point" to our application
+from flask_cors import cross_origin
 from app import app, db # From the module (folder) "app", we're importing the variable app from inside our __init__ method where we defined app=Flask(__name__) which is the instance of our flask app
 from app.models import User, Post, Product
 
@@ -8,5 +9,6 @@ if __name__ == "__main__": # __main__ will be returned as the name of __name__ i
     app.run() # run() is a built in function
 
 @app.shell_context_processor
+@cross_origin()
 def shell_context():
     return {'db':db, 'User':User, 'Post':Post, 'Product':Product}

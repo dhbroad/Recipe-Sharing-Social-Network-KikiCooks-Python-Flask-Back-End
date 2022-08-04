@@ -1,4 +1,4 @@
-from flask import Flask # Note that the Flask we are importing from has a capital F which means it is a Class
+from flask import Flask, send_from_directory # Note that the Flask we are importing from has a capital F which means it is a Class
 from config import Config # from the config file, we are importing our Config class to apply the attributes we defined to our app using from_object down below in this file
 # Note: config.py didn't necessarily need to be a whole separate file. We could have just defined the Class Config() in our __init__.py file, but to keep this file only for things we need in order to initialize the app
 
@@ -14,13 +14,14 @@ from flask_migrate import Migrate # Migrate allows us to take in the app and dat
 from flask_login import LoginManager
 
 # API CROSS ORIGIN IMPORT
-from flask_cors import CORS
+from flask_cors import CORS, cross_origin
 
-app  = Flask(__name__) # instantiating the flask object. We also inherit a lot of methods and attributes through Flask
+app  = Flask(__name__, static_folder='./build', static_url_path='') # instantiating the flask object. We also inherit a lot of methods and attributes through Flask
 login = LoginManager() # built in LoginManager we imported from flask_login, that we will connect with our app below using .init_app()
 CORS(app)
 
 @login.user_loader
+@cross_origin()
 def load_user(user_id):
     return User.query.get(user_id)
 
@@ -43,3 +44,8 @@ migrate = Migrate(app, db) # Before the built-in Migrate class was created, you 
 
 from . import routes # from "." means: from "inside this folder", import routes to connect all the files together
 from . import models
+
+@app.route('/')
+@cross_origin()
+def serve():
+    return send_from_directory(app.static_folder, 'app.js')
