@@ -16,7 +16,7 @@ from flask_login import LoginManager
 # API CROSS ORIGIN IMPORT
 from flask_cors import CORS, cross_origin
 
-app  = Flask(__name__, static_folder='./build', static_url_path='') # instantiating the flask object. We also inherit a lot of methods and attributes through Flask
+app  = Flask(__name__, static_folder='/build', static_url_path='') # instantiating the flask object. We also inherit a lot of methods and attributes through Flask
 login = LoginManager() # built in LoginManager we imported from flask_login, that we will connect with our app below using .init_app()
 CORS(app)
 
