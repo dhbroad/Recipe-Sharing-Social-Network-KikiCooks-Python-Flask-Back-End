@@ -13,7 +13,7 @@ export default function SinglePost({ user, addToFavorites }) {
     const [post, setPost] = useState({}) // Sets the initial state (an empty dictionary). You render the empty dictionary with the return statement that contains your html (JSX), then it mounts with useEffect, which updates our state, so we re-render and show the post we asked for
 
     useEffect(async ()=>{ // useEffect mimics the mount step from rcc. useEffect takes in 2 things: a function, and a list of dependancies
-        const res = await fetch(`http://127.0.0.1:5000/api/posts/${postId}`); // Anytime you want to fetch from Flask, you have to create an API endpoint in your Flask's route.py under the corresponding template directory
+        const res = await fetch(`https://kikicooks.herokuapp.com/api/posts/${postId}`); // Anytime you want to fetch from Flask, you have to create an API endpoint in your Flask's route.py under the corresponding template directory
         const data = await res.json();
         console.log(data)
         

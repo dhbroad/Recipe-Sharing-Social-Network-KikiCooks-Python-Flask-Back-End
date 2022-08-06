@@ -18,7 +18,7 @@ export default function Favorites( { user }) {
  
 
   useEffect(async () => { // useEffect mimics the mount step from rcc. useEffect takes in 2 things: a function, and a list of dependancies
-    const res = await fetch(`http://127.0.0.1:5000/api/show-favorites`, { // Anytime you want to fetch from Flask, you have to create an API endpoint in your Flask's route.py under the corresponding template directory
+    const res = await fetch(`https://kikicooks.herokuapp.com/api/show-favorites`, { // Anytime you want to fetch from Flask, you have to create an API endpoint in your Flask's route.py under the corresponding template directory
         method: "GET",
                 headers: {
                     'Content-Type': 'application/json',
@@ -39,7 +39,7 @@ export default function Favorites( { user }) {
   }, []) 
 
   useEffect(async () => { // useEffect mimics the mount step from rcc. useEffect takes in 2 things: a function, and a list of dependancies
-    const res = await fetch(`http://127.0.0.1:5000/api/get-days`, {
+    const res = await fetch(`https://kikicooks.herokuapp.com/api/get-days`, {
         method: "GET",
             headers: {
                 'Content-Type': 'application/json',
@@ -62,7 +62,7 @@ export default function Favorites( { user }) {
   const weekdays = ["Mon", "Tue", "Wed", "Thur", "Fri", "Sat", "Sun"]
 
   const addToWeekday = async (apost, day, number) => { // e stands for event
-    const res = await fetch("http://127.0.0.1:5000/api/add-meal-to-day", {
+    const res = await fetch("https://kikicooks.herokuapp.com/api/add-meal-to-day", {
         method: "POST",
         headers: {
             'Content-Type': 'application/json',

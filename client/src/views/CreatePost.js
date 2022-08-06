@@ -14,7 +14,7 @@ export default function CreatePost({ user }) {
     const [redirect, setRedirect ] = useState(false)
     const sendToFlask = async ( e ) => {
         e.preventDefault();
-        const res = await fetch("http://127.0.0.1:5000/api/create-post", {
+        const res = await fetch("https://kikicooks.herokuapp.com/api/create-post", {
             method: "POST",
             headers: {
                 'Content-Type': 'application/json',

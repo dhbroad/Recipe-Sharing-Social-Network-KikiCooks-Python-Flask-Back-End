@@ -15,7 +15,7 @@ const [message, setMessage] = useState('');
 
 const sendToFlask = async ( e ) => { // we add the parameter/variable e (which stands for event) because we will be getting some input from the user down in our JSX form
     e.preventDefault(); // because we are passing in an event, we have to use preventDefault() which prevents the screen from reloading when we get our event
-    const res = await fetch("http://127.0.0.1:5000/api/signup", { // Anytime you want to fetch from Flask, you have to create an API endpoint in your Flask's route.py under the corresponding template directory
+    const res = await fetch("https://kikicooks.herokuapp.com/api/signup", { // Anytime you want to fetch from Flask, you have to create an API endpoint in your Flask's route.py under the corresponding template directory
         method: "POST",
         headers: {'Content-Type': 'application/json'},
         body: JSON.stringify({ // You can only send a string over to an object, so we have to use stringify

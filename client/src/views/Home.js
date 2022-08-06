@@ -18,7 +18,7 @@ export default function Home( { user, addToFavorites }) {
   })
 
   useEffect(async () => { // useEffect mimics the mount step from rcc. useEffect takes in 2 things: a function, and a list of dependancies
-    const res = await fetch(`http://127.0.0.1:5000/api/posts`); // Anytime you want to fetch from Flask, you have to create an API endpoint in your Flask's route.py under the corresponding template directory
+    const res = await fetch(`https://kikicooks.herokuapp.com/api/posts`); // Anytime you want to fetch from Flask, you have to create an API endpoint in your Flask's route.py under the corresponding template directory
     const data = await res.json();
     console.log(data)
 
@@ -38,7 +38,7 @@ export default function Home( { user, addToFavorites }) {
 
 
   // const addToFavorites = async (e) => { // e stands for event
-  //   const res = await fetch("http://127.0.0.1:5000/api/favorite-post", {
+  //   const res = await fetch("https://kikicooks.herokuapp.com/api/favorite-post", {
   //       method: "POST",
   //       headers: {
   //           'Content-Type': 'application/json',

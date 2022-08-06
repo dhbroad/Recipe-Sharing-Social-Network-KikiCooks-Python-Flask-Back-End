@@ -86,7 +86,7 @@ export default function App () { // creating a function called "App"
   };
 
   // const searchBarQuery = async (e) => { 
-  //   const res = await fetch(`http://127.0.0.1:5000/api/search/${e}`, {
+  //   const res = await fetch(`https://kikicooks.herokuapp.com/api/search/${e}`, {
   //       method: "GET",
   //       // headers: {
   //       //     'Content-Type': 'application/json',

@@ -17,7 +17,7 @@ export default function SearchResults({user, addToFavorites}) {
     
     
       useEffect(async () => { 
-        const res = await fetch(`http://127.0.0.1:5000/api/search/${searchQuery}`);
+        const res = await fetch(`https://kikicooks.herokuapp.com/api/search/${searchQuery}`);
         const data = await res.json();
         console.log(data)
     
