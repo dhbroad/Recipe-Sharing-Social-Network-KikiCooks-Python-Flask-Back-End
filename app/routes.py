@@ -6,7 +6,7 @@ from flask import render_template, redirect, url_for
 @app.route('/') # route() takes in the path you want to display in the url bar on the website. "/" means the homepage, so for example: if you're on google.com, '/' represents google.com
 # calling '/' in other files of our flask app now referes to the url for our home page, which we have defined below as a redirect to ig.posts
 def home():
-    return redirect(url_for('ig.posts')) # changed our homepage to be ig.posts.html instead of index.html. url_for() returns the url or 'route' of the function you pass in. posts() is a funciton in our ig routes that has the route /posts
+    return redirect(url_for('/')) # changed our homepage to be ig.posts.html instead of index.html. url_for() returns the url or 'route' of the function you pass in. posts() is a funciton in our ig routes that has the route /posts
     names = ['Shoha', "Dylan", "Christopher", "Alex", "Blair"] 
 
     # we created the list "names" to demonstrate passing it in as "my_list" in return render_template, so we can access this variable in our html page and do things like use a for loop to dynamically display the data
