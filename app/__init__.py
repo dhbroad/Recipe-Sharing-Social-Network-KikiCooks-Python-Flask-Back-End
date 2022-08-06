@@ -16,7 +16,7 @@ from flask_login import LoginManager
 # API CROSS ORIGIN IMPORT
 from flask_cors import CORS, cross_origin
 
-app  = Flask(__name__, static_folder='build', static_url_path='') # instantiating the flask object. We also inherit a lot of methods and attributes through Flask
+app  = Flask(__name__, static_folder='../build', static_url_path='') # instantiating the flask object. We also inherit a lot of methods and attributes through Flask
 login = LoginManager() # built in LoginManager we imported from flask_login, that we will connect with our app below using .init_app()
 CORS(app)
 
@@ -46,6 +46,9 @@ from . import routes # from "." means: from "inside this folder", import routes 
 from . import models
 
 @app.route('/')
-@cross_origin()
 def serve():
-    return send_from_directory(app.static_folder, 'app.js')
+    return send_from_directory(app.static_folder, 'index.html')
+
+@app.errorhandler(404)
+def not_found(e):
+    return app.send_static_file('index.html')

@@ -1,0 +1,4 @@
+.my-nav {
+    background-color:burlywood !important; /* you have to include !important if you are already using Bootstraps styling, so that your styling will overwrite the Bootstrap default */
+    color:darkseagreen
+}

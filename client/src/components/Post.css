@@ -1,0 +1,40 @@
+.back-button-arrow {
+    transform: rotate(135deg);
+    -webkit-transform: rotate(135deg);
+}
+
+
+.back-button:hover{
+    background:linear-gradient(0deg,chocolate,burlywood);
+}
+
+.back-button {
+    position:relative;
+    width:100px; 
+    height:40px; 
+    background:linear-gradient(0deg,peru,burlywood);
+    border-Radius:10px; 
+    color:white; 
+    margin-right:20px;
+    font-weight:bold;
+    border:1px solid black;
+}
+
+
+
+.add-to-favorites:hover {
+    background:linear-gradient(0deg,darkgreen,darkseagreen);
+}
+
+.add-to-favorites{
+        float: right; 
+        margin-Right:15px;
+        background:linear-gradient(0deg,green,darkseagreen);
+        color:white;
+        border-Radius:200px;
+        padding:5px 20px 5px 20px;
+        font-Weight:bold;
+        font-Size:'small';
+        border:1px solid black;
+};
+
