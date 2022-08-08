@@ -39,7 +39,7 @@ export default function SinglePost({ user, addToFavorites }) {
                 <button className='back-button'  onClick={()=> window.close()}><i className='back-button-arrow'></i>Back</button> 
             </div> 
             <div classname='col-xl'>
-                <div className="card mb-5" style={{ width: '50rem', marginleft:'20px'}}>
+                <div className="card mb-5 single-post-main-body-image" style={{ marginleft:'20px'}}>
                     <div className="card-header bg-transparent fw-bold">
                             <a className="text-decoration-none text-reset" href={`/profile/${post.username}`}>
                                 <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" class="bi bi-person-fill" viewBox="0 2 16 16" style={{marginRight:'5px'}} >

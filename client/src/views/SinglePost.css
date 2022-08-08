@@ -1,0 +1,11 @@
+@media screen and (max-width: 850px) {
+    .single-post-main-body-image {
+        width:25rem;
+    }
+}
+
+@media screen and (min-width: 850px) {
+    .single-post-main-body-image {
+        width:45rem;
+    }
+}
