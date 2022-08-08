@@ -38,3 +38,14 @@
         border:1px solid black;
 };
 
+@media screen and (max-width: 600px) {
+    .main-body-of-post {
+        width:25rem;
+    }
+}
+
+@media screen and (min-width: 600px) {
+    .main-body-of-post {
+        width:35rem;
+    }
+}

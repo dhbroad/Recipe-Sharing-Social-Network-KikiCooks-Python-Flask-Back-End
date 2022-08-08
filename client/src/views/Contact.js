@@ -18,8 +18,8 @@ const Contact = () => {
             
             <h1>{name}</h1> {/* name is just a variable in this case, so we don't have to do this.state.name like in rcc */}
             <div className='column'>
-                <h5 style={{display:'inline-block', float:'left'}}>Linked In</h5>
-                <h5 style={{display:'inline-block', float:'right'}}>GitHub</h5>
+                <h5 style={{display:'inline-block', float:'left'}}><a href='https://www.linkedin.com/in/david-broadwater-75360750/'>Linked In</a></h5>
+                <h5 style={{display:'inline-block', float:'right'}}><a href='https://github.com/dhbroad/LeetCode'>GitHub</a></h5>
             </div>
         </div>
     )

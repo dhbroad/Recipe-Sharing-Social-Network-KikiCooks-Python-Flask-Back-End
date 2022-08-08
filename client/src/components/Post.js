@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import './Post.css'
 
-export default function Post ( { post, addToFavorites }) {
+export default function Post ( { post, addToFavorites, user }) {
     // render() {
     const p = post // see Article.js for initial notes on props
     
@@ -25,7 +25,7 @@ export default function Post ( { post, addToFavorites }) {
                 </Link>
             </div>
             
-            <Link to={`/kikicooks/${p.id}`} className="card text-decoration-none text-dark" style={{ width: '35rem' }} target='_blank'> {/* <a href= was changed to <Link to= and Link has to be imported */}
+            <Link to={`/kikicooks/${p.id}`} className="card text-decoration-none text-dark main-body-of-post"  target='_blank'> {/* <a href= was changed to <Link to= and Link has to be imported */}
             
                 <img src={p.image} className="card-img-top" alt={p.title} /> {/* <img> needs to have a closing / in JSX so we added it at the end <img /> */}
                 </Link> {/* have to add closing Link tag */}
@@ -34,10 +34,13 @@ export default function Post ( { post, addToFavorites }) {
                         <div class="col-md-6">
                             <h5 className="card-title" style={{display:"inline-block",marginLeft:"15px", marginTop:"15px"}}>{p.title}</h5>
                         </div>
-                        <div class="col-md-6">
-                            <button className="mt-3 font-weight-bold add-to-favorites" 
-                                 onClick={()=>addToFavorites(p)}>ADD TO FAVORITES</button>
-                        </div>
+                        {user.username ?
+                            <div class="col-md-6">
+                                <button className="mt-3 font-weight-bold add-to-favorites" 
+                                    onClick={()=>addToFavorites(p)}>ADD TO FAVORITES</button>
+                            </div>
+                            :
+                            (<></>)}
                     </div>
                 </div>
 
