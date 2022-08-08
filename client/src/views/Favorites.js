@@ -92,6 +92,7 @@ export default function Favorites( { user }) {
         <>
         {console.log(postsState.posts)}
         {console.log('false')}
+        <h1>Favorites</h1> 
             <div clas='column'>
                 {/* <div className='row justify-content-around'>
                     {weekdays.map((w, i) => <Week weekdays={w} key={i}  />)}

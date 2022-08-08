@@ -34,13 +34,15 @@ export default function Post ( { post, addToFavorites, user }) {
                         <div class="col-md-6">
                             <h5 className="card-title" style={{display:"inline-block",marginLeft:"15px", marginTop:"15px"}}>{p.title}</h5>
                         </div>
-                        {user.username ?
+                        
                             <div class="col-md-6">
+                            {user.username ?
                                 <button className="mt-3 font-weight-bold add-to-favorites" 
                                     onClick={()=>addToFavorites(p)}>ADD TO FAVORITES</button>
-                            </div>
-                            :
-                            (<></>)}
+                                    :
+                                    (<></>)}
+                                    </div>
+                            
                     </div>
                 </div>
 

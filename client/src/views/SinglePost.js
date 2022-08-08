@@ -57,8 +57,11 @@ export default function SinglePost({ user, addToFavorites }) {
                                         <h5 className="card-title" style={{display:"inline-block"}}>{post.title}</h5>
                                     </div>
                                     <div class="col-md-6">
+                                        {user.username ? 
                                         <button className='add-to-favorites' style={{float:"right"}} onClick={()=>addToFavorites(post)}>Add To Favorites</button>
-                                    </div>
+                                        :
+                                        <></>}
+                                        </div>
                                 </div>
                         </div>
 
